@@ -122,7 +122,7 @@ class Spring:
             "Spring:\n\tP_p0 = {P_p0} H\n\tP_p = {P_p} H\n\tk_sp = {k_sp} H/m\n\t"
             "G_sp = {G_sp} Pa\n\tn_p = {n_p} rpm\n\td_sr = {d_sr_sp} mm\n\ti_p = {i_p_sp}"
             "\n\tdelta = {delta_sp} mm\n\tf_sp = {f_sp} mm\n\th_sp = {h_sp} mm\n\tro = {ro_sp} kg/m^3"
-            "\n\tn_c_sp = {n_c_sp} rpm\n\tL_szhat = {L_szhat}\n\tn_tau = {n_tau} mm".format(
+            "\n\tn_c_sp = {n_c_sp} rpm\n\tL_szhat = {L_szhat}\n\ttau_max = {tau_max} Па\n\tn_tau = {n_tau} mm".format(
                 P_p0=self.P_p0,
                 P_p=self.P_p,
                 k_sp=self.k_sp,
@@ -137,6 +137,7 @@ class Spring:
                 n_c_sp=self.n_c_sp * 60,
                 L_szhat=self.L_szhat * 1e3,
                 n_tau=self.n_tau,
+                tau_max=self.t_max,
             )
         )
 
