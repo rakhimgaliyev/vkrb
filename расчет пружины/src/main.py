@@ -39,7 +39,7 @@ def show_n_tau_from_smth(all_springs, front, attr="L_szhat"):
 
     # выбранная пружина
     for spring in front:
-        if spring.delta_sp == 6.7564 / 1000 and spring.i_p_sp == 4:
+        if math.fabs(spring.delta_sp - 5.384799999999999 / 1000) < 0.00001 and spring.i_p_sp == 6:
             front_springs_x = [spring.n_tau]
             front_springs_y = [getattr(spring, attr)]
             plt.scatter(front_springs_x, front_springs_y, c="black")
@@ -47,6 +47,14 @@ def show_n_tau_from_smth(all_springs, front, attr="L_szhat"):
 
 def show_front(all_springs, front):
     show_n_tau_from_smth(all_springs, front, attr="L_szhat")
+
+def filter_front_by_d_sr(springs, d_sr=26/0.67):
+    new_spring_arr = []
+    for spring in springs:
+        print(spring.d_sr_sp)
+        if (spring.d_sr_sp < d_sr * 10 ** (-3)):
+            new_spring_arr.append(spring)
+    return new_spring_arr
 
 
 if __name__ == "__main__":
@@ -58,7 +66,7 @@ if __name__ == "__main__":
             spring = Spring(config, delta_sp, i_p_sp)
             if spring.is_spring_ok():
                 springs.append(spring)
-
+    springs = filter_front_by_d_sr(springs)
     front = []
     if len(springs) == 0:
         print("SPRING DO NOT FIT LIMITS")
