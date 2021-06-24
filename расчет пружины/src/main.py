@@ -66,7 +66,7 @@ if __name__ == "__main__":
             spring = Spring(config, delta_sp, i_p_sp)
             if spring.is_spring_ok():
                 springs.append(spring)
-    springs = filter_front_by_d_sr(springs)
+    # springs = filter_front_by_d_sr(springs)
     front = []
     if len(springs) == 0:
         print("SPRING DO NOT FIT LIMITS")
